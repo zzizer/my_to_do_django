@@ -1,0 +1,25 @@
+{% extends 'main/main.html' %} {% load static %}<br />
+{% load crispy_forms_tags %} {% block content %}
+<title>Add Task</title>
+<div class="container mt-5 py-5">
+  <div class="row">
+    <div class="mx-auto" style="width: 500px">
+      <button class="btn btn-secondary w-25 mb-2" onclick="goBack()">
+        Go Back
+      </button>
+      <hr />
+      <form action="" method="post">
+        {% csrf_token %}
+        <h1>New Task</h1>
+        <hr />
+        <div class="row">
+          <div class="col-lg-6">{{form.title|as_crispy_field}}</div>
+          <div class="col-lg-6">{{form.happening_on|as_crispy_field}}</div>
+          <div class="col-lg-12">{{form.description|as_crispy_field}}</div>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Create" />
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

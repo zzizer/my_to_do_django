@@ -1,0 +1,46 @@
+{% extends 'main/main.html' %} {% load static %} {% block content %} <br />
+<title>Home Page</title>
+<div class="container py-5">
+  <div class="row text-center">
+    <div class="col-lg-12">
+      <h1>Welcome to your to-do list!</h1>
+      <p>
+        This is the only best way you can handle, monitor and remember all
+        activities you have to do in a course of whatevever you do...!
+      </p>
+      <a href="{% url 'new-task' %}" class="btn btn-info mb-3">Add Task</a>
+      <!-- <a href="#" class="btn btn-info mb-3"></a> -->
+      <a
+        href="{% url 'account-settings' user.id %}"
+        class="btn btn-info mb-3 ms-2"
+        >My Profile</a
+      >
+    </div>
+    <hr />
+  </div>
+  <!-- Summary of Tasks -->
+  <div class="mx-auto" style="width: 500px">
+    <!--Samuel's Page-->
+    <h3 class="mb-3 mt-3">Upcoming Event</h3>
+    {% if task %}
+    <div class="card mb-3">
+      <div class="card-header">Added on: {{task.created_at}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{task.title}}</h5>
+        <p class="card-text">{{task.description}}</p>
+        <h5 class="card-title">Happening on:</h5>
+        <p class="card-title">{{task.happening_on}}</p>
+      </div>
+      <a href="{% url 'task_delete' task.id %}" class="btn btn-danger w-25 m-2"
+        >Delete</a
+      >
+    </div>
+    {% else %}
+    <ul>
+      <li><p class="text-muted">No upcoming events</p></li>
+    </ul>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

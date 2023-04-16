@@ -1,0 +1,21 @@
+{% extends 'main/main.html' %} {% load static %} {% load crispy_forms_tags %}
+<br />
+{% block content %}
+<title>Update Task</title>
+<div class="container mt-5 py-5">
+  <div class="mx-auto" style="width: 500px">
+    <button class="btn btn-secondary w-25 mb-2" onclick="goBack()">
+      Go Back
+    </button>
+    <hr />
+    <form method="post">
+      {% csrf_token %}
+      <h4>Update Task</h4>
+      <hr />
+      {{form.title|as_crispy_field}} {{form.happening_on|as_crispy_field}}
+      {{form.description|as_crispy_field}} {{form.completed|as_crispy_field}}
+      <input type="submit" value="submit" class="btn btn-primary mt-2" />
+    </form>
+  </div>
+</div>
+{% endblock %}

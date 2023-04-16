@@ -1,0 +1,27 @@
+{% extends 'main/main.html' %} {% load static %} {% block content %} <br />
+<title>Confirm Deletion</title>
+<div class="container mt-5">
+  <div class="mx-auto" style="width: 500px">
+    <button class="btn btn-secondary w-25 mb-2" onclick="goBack()">
+      Go Back
+    </button>
+    <hr />
+    <h2>Delete Task</h2>
+    <hr />
+    <p>
+      <span class="fs-4">You're about to delete a task</span>
+      (<strong>{{object.title}}</strong>)
+    </p>
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn btn-secondary mb-3" type="submit">
+        Yes, delete it
+      </button>
+      <br />
+      <a class="btn btn-secondary mb-4" href="{% url 'home' %}"
+        >Abort -> Home</a
+      >
+    </form>
+  </div>
+</div>
+{% endblock %}
