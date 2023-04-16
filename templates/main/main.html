@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'others/main.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    {% include 'copy_from/navbar.html/' %}
+    <div class="container">{% include 'copy_from/alert.html' %}</div>
+    {% block content %}{% endblock %} {% include 'copy_from/footer.html' %}
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+    <script>
+      // Get current URL path
+      var path = window.location.pathname;
+
+      // Find the active link and remove its 'active' class
+      var activeLink = document.querySelector(".navbar-nav .active");
+      if (activeLink) {
+        activeLink.classList.remove("active");
+      }
+
+      // Add the 'active' class to the corresponding link
+      var links = document.querySelectorAll(".navbar-nav a");
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].pathname === path) {
+          links[i].classList.add("active");
+          break;
+        }
+      }
+    </script>
+    <script
+      src="https://kit.fontawesome.com/834c9be457.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const passwordInput = document.querySelector("#password");
+      const showPasswordCheckbox = document.querySelector("#show-password");
+      showPasswordCheckbox.addEventListener("change", () => {
+        passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
+      });
+    </script>
+  </body>
+</html>

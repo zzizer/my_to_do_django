@@ -1,0 +1,23 @@
+{% extends 'main/main.html' %} {% load static %} {% block content %}
+<title>All Tasks</title>
+<div class="container mt-5 py-5">
+  <div class="row">
+    <button class="btn btn-secondary w-25 mb-2" onclick="goBack()">
+      Go Back
+    </button>
+    <hr />
+    <h4>All Tasks (summary)</h4>
+    {% for task in tasks reversed %}
+    <div class="col-4">
+      <ul>
+        <li>
+          <a href="{% url 'task_detail' task.id %}">{{task.title}}</a> |
+          <a href="{% url 'update-task' task.id %}">update</a> |
+          <a href="{% url 'task_delete' task.id %}">delete</a>
+        </li>
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} update-task

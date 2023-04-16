@@ -1,0 +1,10 @@
+{% extends 'main/main.html' %} {% load static %} {% block content %} <br />
+<title>Confirm Deletion</title>
+<div class="container mt-5">
+  <div class="mx-auto" style="width: 500px">
+    <h1>Deleted</h1>
+    <p>You have successfully deleted a task...!</p>
+    <a class="btn btn-secondary mb-3" href="{% url 'home' %}">Return Home</a>
+  </div>
+</div>
+{% endblock %}
